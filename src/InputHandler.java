@@ -14,7 +14,17 @@ public class InputHandler {
     }
 
     private void setupKeys() {
-        bind(KeyEvent.VK_R, "restart", () -> model.elapsedTicks = 0);
+        bindMove(KeyEvent.VK_UP, "up", -1, 0);
+        bindMove(KeyEvent.VK_DOWN, "down", 1, 0);
+        bindMove(KeyEvent.VK_LEFT, "left", 0, -1);
+        bindMove(KeyEvent.VK_RIGHT, "right", 0, 1);
+
+        bind(KeyEvent.VK_R, "restart", () -> model.restartGame());
+        bind(KeyEvent.VK_N, "next", () -> model.nextLevel());
+    }
+
+    private void bindMove(int code, String name, int dr, int dc) {
+        bind(code, name, () -> model.movePlayer(dr, dc));
     }
 
     private void bind(int code, String name, Runnable action) {
