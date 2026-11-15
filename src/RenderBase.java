@@ -1,3 +1,4 @@
+
 import java.awt.*;
 
 abstract class RenderBase {
@@ -6,9 +7,13 @@ abstract class RenderBase {
                                BOARD_X=34, BOARD_Y=142, HUD_X=568;
 
     protected final GameController model;
+    protected final Maze maze;
+    protected final Player player;
 
     protected RenderBase(GameController model) {
-        this.model=model;
+        this.model = model;
+        maze = model.maze;
+        player = model.player;
     }
 
     protected int currentLevel() {
